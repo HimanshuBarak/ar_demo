@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ar Demo</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <style> 
+        body{
+            background:black;
+            width:100vw;
+            height:100vh;
+        }
+        model-viewer{
+          height:100vh;
+          width:100vw;
+          align:center;
+       }
+    </style>
+    <div class="ar-container">
+        <model-viewer width="500px" id="hotspot-demo" ar ar-modes="webxr scene-viewer quick-look"  animation-name="Idle" camera-controls auto-rotate   src="glb/airplane.glb" style="--poster-color:#ffffff00;" alt="A 3D model of an astronaut." data-js-focus-visible="" ar-status="not-presenting" interpolation-decay="150" interaction-prompt="none" ar-placement="floor" exposure="2.4" scale="0.15 0.15 0.15" orientation="0deg 0deg -45deg" field-of-view="40deg" environment-image="neutral"></model-viewer>
+      
+      
+
+    </div>
+    
+</body>
+</html>
