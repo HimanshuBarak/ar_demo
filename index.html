@@ -12,21 +12,103 @@
     <style> 
         body{
             background:black;
-            width:100vw;
-            height:100vh;
+            width:100%;
+            height:100%;
         }
         model-viewer{
-          height:100vh;
-          width:100vw;
+          height:500px;
+          width:500px;
           align:center;
+          
        }
-    </style>
-    <div class="ar-container">
-        <model-viewer width="500px" id="hotspot-demo" ar ar-modes="webxr scene-viewer quick-look"  animation-name="Idle" camera-controls auto-rotate   src="glb/airplane.glb" style="--poster-color:#ffffff00;" alt="A 3D model of an astronaut." data-js-focus-visible="" ar-status="not-presenting" interpolation-decay="150" interaction-prompt="none" ar-placement="floor" exposure="2.4" scale="0.15 0.15 0.15" orientation="0deg 0deg -45deg" field-of-view="40deg" environment-image="neutral"></model-viewer>
-      
-      
+       #error {
+    background-color: #ffffffdd;
+    border-radius: 16px;
+    padding: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.3s;
+  }
+  #error.hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 2s, opacity 1s 1s;
+  }
+  #model-viewer > #ar-failure {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 175px;
+    display: none;
+  }
 
-    </div>
+  #model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+    display: block;
+  }
+
+  #ar-button {
+   
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 132px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color:#4285f4;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #DADCE0;
+  }
+
+  #ar-button:active {
+    background-color: #E8EAED;
+  }
+
+  #ar-button:focus {
+    outline: none;
+  }
+
+  #ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+  }
+
+    </style>
+  
+        <model-viewer width="500px" id="model-viewer" ar ar-modes="webxr scene-viewer quick-look"  animation-name="Idle" camera-controls auto-rotate   src="glb/airplane.glb" style="--poster-color:#ffffff00;" alt="A 3D model of an astronaut." data-js-focus-visible="" ar-status="not-presenting" interpolation-decay="150" interaction-prompt="none" ar-placement="floor" exposure="2.4" scale="0.15 0.15 0.15" orientation="0deg 0deg -45deg" field-of-view="40deg" environment-image="neutral">
+      
+        <div id="error" class="hide">AR is not supported on this device</div>
+        </model-viewer>
+        <button slot="ar-button" id="ar-button">
+            View in your space
+          </button>
+        
+          
+        
+          <button id="ar-failure">
+            AR is not tracking!
+          </button>
+        <script>
+        document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
+            if(event.detail.status === 'failed'){
+            const error = document.querySelector("#error");
+            error.classList.remove('hide');
+            error.addEventListener('transitionend',(event) => {
+                error.classList.add('hide');
+            });
+            }
+        });
+        </script>
+
+  
     
 </body>
 </html>
