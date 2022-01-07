@@ -86,7 +86,6 @@
         <model-viewer width="500px" id="model-viewer" ar ar-modes="webxr scene-viewer quick-look"  animation-name="Idle" camera-controls auto-rotate   src="glb/airplane.glb" style="--poster-color:#ffffff00;" alt="A 3D model of an astronaut." data-js-focus-visible="" ar-status="not-presenting" interpolation-decay="150" interaction-prompt="none" ar-placement="floor" exposure="2.4" scale="0.15 0.15 0.15" orientation="0deg 0deg -45deg" field-of-view="40deg" environment-image="neutral">
       
         <div id="error" class="hide">AR is not supported on this device</div>
-        </model-viewer>
         <button slot="ar-button" id="ar-button">
             View in your space
           </button>
@@ -96,6 +95,8 @@
           <button id="ar-failure">
             AR is not tracking!
           </button>
+        </model-viewer>
+       
         <script>
         document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
             if(event.detail.status === 'failed'){
