@@ -70,6 +70,14 @@
     border: 1px solid #DADCE0;
   }
 
+  #ar-button{
+    position: absolute;
+    top:50%;
+    left:50%;
+    height: 36px;
+    display:none;
+  }
+
   #ar-button:active {
     background-color: #E8EAED;
   }
@@ -77,7 +85,12 @@
   #ar-button:focus {
     outline: none;
   }
-
+  model-viewer[ar-status="session-started"] > #ar-prompt {
+    display: block;
+  }
+  model-viewer[ar-status="object-placed"] > #ar-prompt {
+    display: none;
+  }
   #ar-button:focus-visible {
     outline: 1px solid #4285f4;
   }
@@ -90,7 +103,10 @@
         <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; ">
             👋 Activate AR
         </button>
-        
+           
+        <button id="ar-prompt">
+          Point your camera to the floor
+        </button>
         
         
           <button id="ar-failure">
@@ -107,6 +123,7 @@
                 error.classList.add('hide');
             });
             }
+           
         });
         </script>
 
