@@ -49,27 +49,13 @@
     display: block;
   }
 
-  #ar-button {
-   
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position: 12px 50%;
-    background-color: #fff;
+  #ar-help{
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    bottom: 132px;
-    padding: 0px 16px 0px 40px;
-    font-family: Roboto Regular, Helvetica Neue, sans-serif;
-    font-size: 14px;
-    color:#4285f4;
+    top:50%;
+   
     height: 36px;
-    line-height: 36px;
-    border-radius: 18px;
-    border: 1px solid #DADCE0;
+    display:none;
   }
-
   #ar-prompt{
     position: absolute;
     top:50%;
@@ -78,16 +64,13 @@
     display:none;
   }
 
-  #ar-button:active {
-    background-color: #E8EAED;
-  }
-
-  #ar-button:focus {
-    outline: none;
+  model-viewer[ar-status="session-started"] > #ar-help {
+    display: block;
   }
   
+  
   .show {
-    display: block;
+    display: block !important;
   }
   
   #ar-button:focus-visible {
@@ -107,6 +90,9 @@
           Point your camera to the floor in direction of the floor
         </button>
         
+        <button id="ar-help">
+          Pan to zoom
+        </button>
         
           <button id="ar-failure">
             AR is not tracking!
@@ -127,7 +113,7 @@
             prompt.classList.add('show')
             console.log("we were here")
            }
-           if(event.detail.status ==="not-presenting"){
+           if(event.detail.status ==="object-placed"){
             const prompt = document.querySelector("#ar-prompt");
             prompt.classList.remove('show')
               console.log("Probably not here.")
