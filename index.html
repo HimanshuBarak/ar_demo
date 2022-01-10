@@ -73,7 +73,7 @@
   #ar-prompt{
     position: absolute;
     top:50%;
-    left:50%;
+    left:25%;
     height: 36px;
     display:none;
   }
@@ -86,12 +86,10 @@
     outline: none;
   }
   
-  model-viewer[ar-status="session-started"] > #ar-prompt {
+  .show {
     display: block;
   }
-  model-viewer[ar-status="object-placed"] > #ar-prompt {
-    display: none;
-  }
+  
   #ar-button:focus-visible {
     outline: 1px solid #4285f4;
   }
@@ -106,7 +104,7 @@
         </button>
            
         <button id="ar-prompt">
-          Point your camera to the floor
+          Point your camera to the floor in direction of the floor
         </button>
         
         
@@ -124,6 +122,16 @@
                 error.classList.add('hide');
             });
             }
+           if(even.detail.status ==="session-started"){
+            const prompt = document.querySelector("#ar-prompt");
+            prompt.classList.add('show')
+
+           }
+           if(even.detail.status ==="object-placed"){
+            const prompt = document.querySelector("#ar-prompt");
+            prompt.classList.remove('show')
+              
+           }
            
         });
         </script>
