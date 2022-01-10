@@ -122,12 +122,12 @@
                 error.classList.add('hide');
             });
             }
-           if(even.detail.status ==="session-started"){
+           if(event.detail.status ==="session-started"){
             const prompt = document.querySelector("#ar-prompt");
             prompt.classList.add('show')
 
            }
-           if(even.detail.status ==="object-placed"){
+           if(event.detail.status ==="object-placed"){
             const prompt = document.querySelector("#ar-prompt");
             prompt.classList.remove('show')
               
