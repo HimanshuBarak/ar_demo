@@ -125,12 +125,12 @@
            if(event.detail.status ==="session-started"){
             const prompt = document.querySelector("#ar-prompt");
             prompt.classList.add('show')
-
+            console.log("we were here")
            }
            if(event.detail.status ==="object-placed"){
             const prompt = document.querySelector("#ar-prompt");
             prompt.classList.remove('show')
-              
+              console.log("Probably not here.")
            }
            
         });
