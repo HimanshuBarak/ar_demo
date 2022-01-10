@@ -48,7 +48,9 @@
   #model-viewer[ar-tracking="not-tracking"] > #ar-failure {
     display: block;
   }
-
+  #model-viewer[ar-tracking="tracking"] > #ar-prompt {
+    display: none !important;
+  }
   #ar-help{
     position: absolute;
     top:50%;
@@ -95,7 +97,7 @@
         </button>
         
           <button id="ar-failure">
-            AR is not tracking!
+            Point your camera towards a surface
           </button>
         </model-viewer>
        
